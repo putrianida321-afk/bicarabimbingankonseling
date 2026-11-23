@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BICARA BK – Ruang Informasi dan Pengembangan Diri</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#164E43;--mint:#DCEFE8;--bg:#F5F3EC;--gold:#E8C98A;--blue:#D7E5F7;--ink:#1b2b27;--card:#fff;--muted:#53675f;--line:#cfd8d2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--teal:#7fd1bb;--mint:#17342d;--bg:#0f1c19;--gold:#E8C98A;--blue:#1b2e43;--ink:#e8f0ec;--card:#16272300;--muted:#a3b8b0;--line:#2d423b}}
+:root[data-theme="dark"]{--teal:#7fd1bb;--mint:#17342d;--bg:#0f1c19;--gold:#E8C98A;--blue:#1b2e43;--ink:#e8f0ec;--card:#162723;--muted:#a3b8b0;--line:#2d423b}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--card:#162723}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Roboto,Arial,sans-serif}
+h1,h2,h3{font-family:Poppins,Montserrat,sans-serif;line-height:1.15;margin:0 0 .5em;color:var(--teal)}
+h2{font-size:clamp(26px,5vw,38px)}h3{font-size:21px}
+p{margin:0 0 1em;max-width:68ch}
+nav{position:sticky;top:0;z-index:5;background:var(--teal);display:flex;gap:4px;align-items:center;padding:10px 16px;overflow-x:auto;white-space:nowrap}
+nav b{font:800 18px Poppins,sans-serif;color:var(--gold);margin-right:12px}
+nav a{color:#F5F3EC;text-decoration:none;font-size:14px;padding:6px 12px;border-radius:99px}
+nav a:hover,nav a:focus-visible{background:rgba(255,255,255,.18);outline:none}
+@media(prefers-color-scheme:dark){nav{background:#0b2a24}}
+section{padding:64px 20px;max-width:1040px;margin:auto}
+.hero{background:var(--teal);color:#F5F3EC;max-width:none;padding:72px 20px 80px;position:relative;overflow:hidden}
+@media(prefers-color-scheme:dark){.hero{background:#0b2a24}}
+.hero>div{max-width:1040px;margin:auto;position:relative}
+.hero h1{font-size:clamp(40px,10vw,84px);color:#F5F3EC;font-weight:800;letter-spacing:-.02em}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:19px;color:#dcefe8}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9}
+.b1{width:360px;height:360px;right:-90px;top:-80px;background:#1f6a5b}
+.b2{width:170px;height:170px;right:110px;bottom:-60px;background:var(--gold);opacity:.85}
+.b3{width:90px;height:90px;right:40px;top:150px;background:#D7E5F7;opacity:.7}
+.acr{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
+.acr span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:6px 12px;font-size:15px}
+.acr b{color:var(--gold);font-family:Poppins}
+.btn{display:inline-block;background:var(--gold);color:#164E43;font:700 16px Poppins,sans-serif;padding:13px 26px;border-radius:99px;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}.btn:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.card.mint{background:var(--mint)}.card.blue{background:var(--blue)}
+.ic{font-size:30px;display:block;margin-bottom:8px}
+.alt{background:var(--mint);max-width:none}.alt>.in{max-width:1040px;margin:auto}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button,.opt{font:500 15px Roboto,sans-serif;border:2px solid var(--teal);background:transparent;color:var(--teal);padding:9px 18px;border-radius:99px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--teal);color:var(--bg)}
+.panel{display:none;background:var(--card);border-radius:24px;padding:28px;border-left:10px solid var(--gold)}.panel.on{display:block;animation:f .3s}
+@keyframes f{from{opacity:0;transform:translateY(8px)}}
+ul{padding-left:20px;margin:0 0 1em}li{margin:4px 0}
+.cols{display:grid;gap:8px 28px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font:600 16px Poppins,sans-serif;color:var(--teal)}
+details p{margin:10px 0 0;color:var(--muted)}
+.steps label{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:8px;cursor:pointer}
+.steps input{width:20px;height:20px;accent-color:var(--teal)}
+.steps input:checked+span{text-decoration:line-through;color:var(--muted)}
+.bar{height:12px;background:var(--line);border-radius:9px;overflow:hidden;margin:14px 0}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+.holl{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:16px}
+.holl button{font:800 34px Poppins;border:0;border-radius:18px;padding:16px 0;cursor:pointer;color:#164E43;background:var(--blue)}
+.holl button[aria-pressed=true]{background:var(--gold);transform:scale(1.06)}
+.holl small{display:block;font:500 13px Roboto}
+#hd{min-height:150px}
+.q{margin-bottom:22px}.q p{font-weight:500;margin-bottom:8px}
+.opt{display:block;width:100%;text-align:left;margin-bottom:8px;border-radius:14px;color:var(--ink);border-color:var(--line);background:var(--card)}
+.opt:hover{border-color:var(--teal)}
+.opt.ok{background:#bfe8d3;border-color:#1b7a52;color:#0b3a28}.opt.no{background:#f8d3cf;border-color:#b3392e;color:#5a1510}
+.fb{font-size:15px;color:var(--muted);min-height:1em}
+.score{font:800 56px Poppins;color:var(--teal)}
+.vid{display:block;text-decoration:none;color:inherit}.vid:hover{border-color:var(--teal)}
+.warn{background:var(--gold);color:#164E43;border-radius:20px;padding:20px 24px;margin-top:20px}
+.warn p{margin:0}
+ol.ref{padding-left:20px;font-size:15px;color:var(--muted)}ol.ref li{margin-bottom:8px}
+footer{background:var(--teal);color:#dcefe8;text-align:center;padding:36px 20px;font-size:15px}
+footer b{font-family:Poppins;color:var(--gold);font-size:20px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<nav><b>BICARA BK</b><a href="#tentang">Tentang</a><a href="#bidang">Bidang</a><a href="#layanan">Layanan</a><a href="#diri">Diri</a><a href="#karier">Karier</a><a href="#video">Video</a><a href="#kuis">Kuis</a><a href="#bantuan">Bantuan</a></nav>
+
+<header class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div>
+<p style="margin-bottom:6px">Selamat datang di</p>
+<h1>BICARA <span>BK</span></h1>
+<div class="acr"><span><b>B</b>imbingan</span><span><b>I</b>nformasi</span><span><b>C</b>urhat</span><span><b>A</b>rah</span><span><b>P</b>engembangan Diri</span></div>
+<p style="font:700 clamp(22px,4vw,32px)/1.25 Poppins;color:#fff;max-width:20ch">Kenali diri, kembangkan potensi, temukan arah masa depan.</p>
+<p>Ruang informasi bimbingan dan konseling untuk memahami diri, membangun hubungan positif, belajar efektif, dan merencanakan masa depan.</p>
+<a class="btn" href="#bidang">Jelajahi materi BK</a></div></header>
+
+<section><div class="grid">
+<div class="card mint"><span class="ic">🧠</span><h3>Kenali Diri</h3>Emosi, kepribadian, potensi, kelebihan.</div>
+<div class="card blue"><span class="ic">📚</span><h3>Belajar Efektif</h3>Strategi, motivasi, konsentrasi, waktu.</div>
+<div class="card mint"><span class="ic">🤝</span><h3>Hubungan Sehat</h3>Komunikasi, empati, batasan diri.</div>
+<div class="card blue"><span class="ic">🌱</span><h3>Kesehatan Mental</h3>Memahami stres dan menjaga kesejahteraan.</div>
+<div class="card mint"><span class="ic">🎓</span><h3>Perencanaan Karier</h3>Minat, bakat, studi, pekerjaan.</div>
+<div class="card blue"><span class="ic">💬</span><h3>Ruang Bantuan</h3>Kapan dan kepada siapa mencari bantuan.</div>
+</div></section>
+
+<section id="tentang" class="alt"><div class="in">
+<h2>Apa itu Bimbingan dan Konseling?</h2>
+<p>Proses bantuan yang sistematis, terencana, berkelanjutan, dan sesuai kebutuhan agar individu memahami diri dan lingkungannya, mengembangkan potensi, mengatasi hambatan, serta mengambil keputusan secara mandiri dan bertanggung jawab.</p>
+<p>BK bukan hanya untuk yang sedang bermasalah, tetapi untuk semua yang ingin berkembang optimal dalam aspek pribadi, sosial, belajar, dan karier.</p>
+<h3>Enam fungsi BK <small style="font:400 14px Roboto;color:var(--muted)">(ketuk untuk membuka)</small></h3>
+<details><summary>Pemahaman</summary><p>Membantu individu memahami diri, lingkungan, dan situasi yang dihadapi.</p></details>
+<details><summary>Pencegahan</summary><p>Mengurangi kemungkinan munculnya masalah melalui edukasi.</p></details>
+<details><summary>Pengembangan</summary><p>Mendukung pertumbuhan potensi dan keterampilan individu.</p></details>
+<details><summary>Pengentasan</summary><p>Membantu individu menangani masalah yang sedang dialami.</p></details>
+<details><summary>Pemeliharaan</summary><p>Menjaga kondisi positif dan kemampuan yang telah berkembang.</p></details>
+<details><summary>Advokasi</summary><p>Membantu melindungi hak individu ketika menghadapi perlakuan yang merugikan.</p></details>
+<h3 style="margin-top:28px">Prinsip BK</h3>
+<ul class="cols"><li>Untuk semua individu, bukan hanya yang bermasalah</li><li>Setiap individu unik</li><li>Individu mampu berkembang</li><li>Menghargai martabat dan hak</li><li>Kerahasiaan sesuai batas etika dan keselamatan</li><li>Membantu individu lebih mandiri</li><li>Profesional, terencana, sesuai kebutuhan</li></ul>
+</div></section>
+
+<section id="bidang"><h2>Empat bidang layanan BK</h2>
+<div class="tabs" role="tablist" id="tabs"></div><div id="panels"></div></section>
+
+<section id="layanan" class="alt"><div class="in">
+<h2>Layanan BK di sekolah</h2>
+<details><summary>Bimbingan klasikal</summary><p>Materi untuk seluruh siswa dalam satu kelas, misalnya manajemen waktu, bullying, motivasi.</p></details>
+<details><summary>Bimbingan kelompok</summary><p>Kegiatan kelompok membahas topik pengembangan diri, seperti kepercayaan diri dan komunikasi.</p></details>
+<details><summary>Konseling individual</summary><p>Bantuan perorangan untuk memahami kesulitan belajar atau konflik pribadi.</p></details>
+<details><summary>Konseling kelompok</summary><p>Bantuan dalam kelompok kecil, misalnya pengembangan keterampilan sosial.</p></details>
+<details><summary>Konsultasi dan kolaborasi</summary><p>Guru atau orang tua berdiskusi dengan guru BK; guru BK bekerja sama dengan wali kelas dan orang tua.</p></details>
+<details><summary>Mediasi dan advokasi</summary><p>Membantu pihak berkonflik berkomunikasi, dan membantu siswa memperoleh hak serta perlindungan.</p></details>
+<details><summary>Alih tangan kasus</summary><p>Mengarahkan konseli ke psikolog atau tenaga kesehatan bila kebutuhannya di luar kompetensi guru BK.</p></details>
+<h3 style="margin-top:28px">Bagaimana konseling berlangsung?</h3>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+<div class="card"><b>1. Membangun hubungan</b><br><small>Suasana aman dan saling percaya</small></div>
+<div class="card"><b>2. Memahami kebutuhan</b><br><small>Menceritakan situasi</small></div>
+<div class="card"><b>3. Menentukan tujuan</b><br><small>Perubahan yang ingin dicapai</small></div>
+<div class="card"><b>4. Mencari alternatif</b><br><small>Pilihan tindakan realistis</small></div>
+<div class="card"><b>5. Melaksanakan rencana</b><br><small>Mencoba langkah yang disepakati</small></div>
+<div class="card"><b>6. Evaluasi</b><br><small>Meninjau perkembangan</small></div></div>
+<p style="margin-top:16px">Konseling adalah proses bantuan, bukan penghakiman. Kamu berhak diperlakukan dengan hormat dan bercerita sesuai kesiapanmu.</p>
+</div></section>
+
+<section id="diri"><h2>Pengembangan diri</h2>
+<h3>Latihan: kelola emosimu</h3>
+<p>Centang langkah yang sudah kamu lakukan saat emosi sedang naik.</p>
+<div class="steps" id="steps"></div>
+<div class="bar"><i id="pb"></i></div><p id="pt" style="font-weight:500"></p>
+<h3 style="margin-top:36px">Komunikasi asertif</h3>
+<p>Menyampaikan pendapat dan kebutuhan dengan jelas sambil tetap menghargai orang lain. Pilih situasi:</p>
+<div class="tabs" id="as"></div><div class="card blue" id="ar" style="font:italic 500 19px/1.5 Poppins,sans-serif;color:var(--ink)">Pilih satu situasi di atas.</div>
+<h3 style="margin-top:36px">Melihat bullying? Lakukan ini</h3>
+<ul class="cols"><li>Jangan ikut menyebarkan ejekan atau konten merugikan</li><li>Dukung orang yang menjadi sasaran</li><li>Hindari tindakan yang menaikkan risiko konflik</li><li>Simpan informasi untuk pelaporan</li><li>Laporkan ke guru, guru BK, orang tua, atau orang dewasa tepercaya</li></ul>
+</section>
+
+<section id="karier" class="alt"><div class="in">
+<h2>Karier dan masa depan</h2>
+<p>Pilih tipe minat Holland (RIASEC) yang paling kamu rasakan:</p>
+<div class="holl" id="holl"></div>
+<div class="card" id="hd">Ketuk salah satu huruf untuk melihat penjelasannya.</div>
+<p style="font-size:15px;color:var(--muted);margin-top:12px">RIASEC adalah kerangka eksplorasi minat, bukan alat untuk menentukan jurusan atau profesi secara mutlak.</p>
+<h3 style="margin-top:28px">Tips memilih jurusan</h3>
+<ul class="cols"><li>Kenali minat dan aktivitas yang disukai</li><li>Pertimbangkan kemampuan akademik</li><li>Cari tahu mata kuliahnya</li><li>Pelajari prospek pekerjaan</li><li>Pertimbangkan dukungan keluarga</li><li>Diskusikan dengan guru BK</li><li>Jangan memilih hanya karena ikut teman</li></ul>
+</div></section>
+
+<section id="video"><h2>Media edukasi</h2>
+<div class="grid">
+<a class="card vid" href="https://www.youtube.com/watch?v=UMudP8seYNM" target="_blank" rel="noopener"><span class="ic">▶️</span><h3>Bersama Atasi Perundungan: Terkirim</h3><small>Cerdas Berkarakter Kemendikdasmen RI. Dampak perundungan, dukungan untuk korban, dan pentingnya tidak diam.</small></a>
+<a class="card vid" href="https://www.youtube.com/watch?v=7EJS8clh5gE" target="_blank" rel="noopener"><span class="ic">▶️</span><h3>Menghindari Pelecehan dan Kekerasan</h3><small>Ayo Sehat Kementerian Kesehatan RI. Memahami dan mengatasi bullying, pelecehan, dan kekerasan.</small></a></div>
+<p style="margin-top:16px"><b>Refleksi setelah menonton:</b> apa informasi barunya, apa pesan utamanya, dan apa yang bisa kamu lakukan jika temanmu mengalami hal serupa?</p></section>
+
+<section id="kuis" class="alt"><div class="in">
+<h2>Kuis: seberapa kenal kamu dengan BK?</h2>
+<div id="quiz"></div>
+<div class="card" id="res" style="display:none;text-align:center"><div class="score" id="sc"></div><p id="sm" style="margin:0 auto 14px"></p><button class="btn" id="rs">Ulangi kuis</button></div>
+</div></section>
+
+<section id="bantuan"><h2>Tidak harus menghadapi semuanya sendirian</h2>
+<p>Mengalami kesulitan bukan berarti lemah atau gagal. Kamu bisa mencari bantuan saat kewalahan, berkonflik dengan teman atau keluarga, sulit berkonsentrasi, butuh informasi karier, atau butuh seseorang yang mau mendengarkan.</p>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+<div class="card mint">Guru BK atau konselor</div><div class="card blue">Orang tua atau keluarga tepercaya</div><div class="card mint">Wali kelas</div><div class="card blue">Guru yang dipercaya</div><div class="card mint">Psikolog atau tenaga profesional</div><div class="card blue">Layanan kesehatan</div></div>
+<div class="warn"><p><b>Pesan penting.</b> Website ini media edukasi dan tidak menggantikan konseling profesional, pemeriksaan psikologis, atau layanan kesehatan. Jika kamu tidak aman, mengalami kekerasan, atau butuh bantuan segera, hubungi orang dewasa tepercaya atau layanan bantuan setempat.</p></div></section>
+
+<section class="alt"><div class="in"><h2>Daftar referensi</h2>
+<ol class="ref">
+<li>Direktorat Jenderal Guru dan Tenaga Kependidikan. (2016). <i>Panduan operasional penyelenggaraan bimbingan dan konseling sekolah menengah pertama (SMP)</i>. Kemendikbud RI.</li>
+<li>Kementerian Pendidikan dan Kebudayaan RI. (2014). <i>Permendikbud Nomor 111 Tahun 2014 tentang bimbingan dan konseling pada pendidikan dasar dan pendidikan menengah</i>.</li>
+<li>UNICEF Indonesia. (n.d.). <i>Materi KIE untuk remaja terkait kesehatan mental</i>. unicef.org/indonesia</li>
+<li>UNICEF Indonesia. (2026). <i>Membantu remaja berkembang: Panduan fasilitator untuk remaja usia 15 hingga 19 tahun</i>.</li>
+<li>UNICEF. (2025). <i>Profil kesehatan remaja Indonesia 2024</i>. UNICEF Indonesia.</li>
+<li>World Health Organization. (2025, 1 September). <i>Mental health of adolescents</i>. who.int</li>
+<li>Cerdas Berkarakter Kemendikdasmen RI. (2023, 20 Desember). <i>Bersama atasi perundungan: Terkirim</i> [Video]. YouTube.</li>
+<li>Ayo Sehat Kementerian Kesehatan RI. (2024, 26 Juni). <i>Menghindari pelecehan dan kekerasan</i> [Video]. YouTube.</li></ol></div></section>
+
+<footer><b>BICARA BK</b><br>Setiap individu memiliki potensi. Kenali diri, kembangkan kemampuan, dan temukan arah masa depanmu.<br>Pribadi · Sosial · Belajar · Karier</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+// Bidang layanan
+const B=[["👤","Pribadi","Memahami diri, mengelola emosi, membangun kepercayaan diri dan kebiasaan positif.",["Mengenal kelebihan dan potensi","Membangun kepercayaan diri","Mengelola emosi dan stres","Menumbuhkan kemandirian","Menentukan tujuan hidup"],"Cara mengenali diri: catat aktivitas yang menarik, kenali situasi yang nyaman dan tidak nyaman, minta umpan balik dari orang tepercaya, lalu pilih satu kemampuan untuk dikembangkan."],
+["🤝","Sosial","Membangun hubungan sehat, berkomunikasi, bekerja sama, dan menghargai orang lain.",["Komunikasi efektif dan empati","Pertemanan sehat","Penyelesaian konflik","Pencegahan bullying","Etika bermedia sosial"],"Pertemanan sehat: saling menghargai, tidak memaksakan kehendak, tidak merendahkan, menghormati batasan pribadi, dan memberi ruang untuk berkembang."],
+["📚","Belajar","Mengembangkan strategi belajar, motivasi, konsentrasi, dan manajemen waktu.",["Jadwal dan prioritas belajar","Teknik mencatat","Mengatasi kebiasaan menunda","Persiapan ujian","Motivasi belajar"],"Atur waktu: buat daftar tugas, urutkan berdasarkan urgensi dan kepentingan, tetapkan waktu realistis, kurangi gangguan, beri jeda istirahat, lalu evaluasi."],
+["🧭","Karier","Memahami minat, kemampuan, pilihan pendidikan, dan perencanaan masa depan.",["Minat dan potensi karier","Informasi perguruan tinggi dan jurusan","Dunia pekerjaan","Perencanaan karier","Pengambilan keputusan karier"],"Menentukan pilihan: kenali aktivitas yang disukai, kemampuan, dan nilai penting dalam pekerjaan; cari informasi jurusan dan profesi; diskusikan dengan guru BK atau orang berpengalaman."]];
+B.forEach((b,i)=>{const t=document.createElement("button");t.textContent=b[0]+" "+b[1];t.setAttribute("role","tab");t.onclick=()=>sel(i);$("#tabs").append(t);
+const p=document.createElement("div");p.className="panel";p.innerHTML=`<h3>Bimbingan ${b[1]}</h3><p>${b[2]}</p><ul class="cols">${b[3].map(x=>"<li>"+x+"</li>").join("")}</ul><p style="background:var(--mint);border-radius:14px;padding:14px;margin:0">${b[4]}</p>`;$("#panels").append(p)});
+function sel(i){document.querySelectorAll("#tabs button").forEach((t,j)=>t.setAttribute("aria-selected",i==j));document.querySelectorAll(".panel").forEach((p,j)=>p.classList.toggle("on",i==j))}sel(0);
+// Emosi
+const S=["Kenali emosi yang sedang dirasakan","Beri nama pada emosi itu","Cari tahu pemicunya","Beri waktu untuk menenangkan diri","Pertimbangkan beberapa respons","Pilih respons yang aman dan sesuai","Evaluasi setelah situasi berlalu"];
+const M=["Mulai dari langkah pertama.","Bagus, kamu mulai peka dengan emosimu.","Terus lanjut, kamu di jalur yang tepat.","Hampir separuh jalan!","Kamu sudah banyak berlatih.","Tinggal sedikit lagi.","Luar biasa, siklus lengkap!"];
+S.forEach(s=>{const l=document.createElement("label");l.innerHTML=`<input type="checkbox"><span>${s}</span>`;l.firstChild.onchange=up;$("#steps").append(l)});
+function up(){const n=document.querySelectorAll("#steps input:checked").length;$("#pb").style.width=n/S.length*100+"%";$("#pt").textContent=n+" dari "+S.length+" langkah. "+(n?M[n-1]:M[0])}up();
+// Asertif
+[["Teman minta menyalin tugas","Aku bisa bantu menjelaskan, tetapi kamu perlu mengerjakan tugasmu sendiri."],["Tidak setuju pendapat","Aku memahami pendapatmu, tetapi menurutku ada sudut pandang lain."],["Tidak nyaman dengan candaan","Aku kurang nyaman dengan candaan itu. Tolong jangan mengulanginya."]].forEach(a=>{const b=document.createElement("button");b.textContent=a[0];b.onclick=()=>{$("#ar").textContent="“"+a[1]+"”";document.querySelectorAll("#as button").forEach(x=>x.setAttribute("aria-selected",x==b))};$("#as").append(b)});
+// RIASEC
+const R=[["R","Realistic","Praktis","Menyukai aktivitas teknis, alat, pekerjaan lapangan, dan hal konkret.","Teknik, pertanian, mekanik"],["I","Investigative","Peneliti","Menyukai analisis, penelitian, dan pemecahan masalah.","Sains, kedokteran, riset"],["A","Artistic","Kreatif","Menyukai seni, desain, ekspresi, dan ide baru.","Desain, musik, media"],["S","Social","Sosial","Menyukai membantu, mengajar, membimbing, dan berinteraksi.","Guru, konselor, keperawatan"],["E","Enterprising","Pengusaha","Menyukai kepemimpinan, persuasi, organisasi, dan bisnis.","Manajemen, bisnis, hukum"],["C","Conventional","Terstruktur","Menyukai administrasi, data, keteraturan, dan prosedur.","Akuntansi, administrasi, data"]];
+R.forEach((r,i)=>{const b=document.createElement("button");b.innerHTML=r[0]+"<small>"+r[2]+"</small>";b.setAttribute("aria-pressed","false");b.onclick=()=>{document.querySelectorAll("#holl button").forEach(x=>x.setAttribute("aria-pressed",x==b));$("#hd").innerHTML=`<h3>${r[0]} – ${r[1]} (${r[2]})</h3><p>${r[3]}</p><p style="margin:0"><b>Contoh bidang yang bisa dijelajahi:</b> ${r[4]}.</p>`};$("#holl").append(b)});
+// Kuis
+const Q=[["Apa tujuan utama Bimbingan dan Konseling?",["Menghukum siswa yang salah","Membantu individu mengembangkan potensi dan mencapai kemandirian","Menggantikan tugas guru mata pelajaran","Mengawasi seluruh kegiatan siswa"],1],
+["Yang termasuk bidang layanan BK adalah...",["Pribadi, sosial, belajar, dan karier","Olahraga, seni, dan musik","Administrasi, keuangan, dan bisnis","Teknologi, perdagangan, dan industri"],0],
+["Saat kesulitan belajar, tindakan yang tepat adalah...",["Mengabaikan tugas","Menyalahkan teman","Mencari bantuan dan menyusun strategi belajar","Berhenti mencoba"],2],
+["Sikap yang mencerminkan komunikasi asertif adalah...",["Memaksakan pendapat","Diam meski tidak nyaman","Menyampaikan pendapat tegas dan menghargai orang lain","Membalas dengan hinaan"],2],
+["Bimbingan karier membantu individu...",["Memilih pekerjaan tanpa melihat kemampuan","Mengenali minat, potensi, dan pilihan pendidikan atau pekerjaan","Mengikuti pilihan teman","Menghindari perencanaan masa depan"],1],
+["Melihat teman dibully, tindakan yang tepat adalah...",["Ikut menertawakan","Menyebarkan video kejadian","Mendukung teman dan melapor ke pihak tepercaya","Membiarkan karena bukan urusan sendiri"],2],
+["Manajemen waktu yang baik dilakukan dengan...",["Mengerjakan semua tugas bersamaan","Menunda sampai mendekati batas","Menyusun prioritas dan jadwal realistis","Menghabiskan waktu untuk hal tidak penting"],2],
+["Jika masalah terasa sulit diatasi sendiri, seseorang dapat...",["Menyimpan semuanya sendiri","Mencari bantuan orang dewasa tepercaya atau tenaga profesional","Menyalahkan orang lain","Menghindari semua orang"],1]];
+let sc=0,done=0;
+function build(){sc=0;done=0;$("#res").style.display="none";$("#quiz").innerHTML="";Q.forEach((q,i)=>{const d=document.createElement("div");d.className="card q";d.innerHTML=`<p>${i+1}. ${q[0]}</p>`;const f=document.createElement("div");f.className="fb";q[1].forEach((o,j)=>{const b=document.createElement("button");b.className="opt";b.textContent=String.fromCharCode(65+j)+". "+o;b.onclick=()=>{d.querySelectorAll(".opt").forEach((x,k)=>{x.disabled=true;if(k==q[2])x.classList.add("ok")});if(j==q[2]){sc++;f.textContent="Tepat!"}else{b.classList.add("no");f.textContent="Belum tepat. Jawaban benar ditandai hijau."}if(++done==Q.length)fin()};d.append(b)});d.append(f);$("#quiz").append(d)})}
+function fin(){const r=$("#res");r.style.display="block";$("#sc").textContent=sc+" / "+Q.length;$("#sm").textContent=sc>=7?"Hebat! Kamu sudah memahami BK dengan baik.":sc>=4?"Cukup baik. Baca ulang beberapa materi lalu coba lagi.":"Tidak apa-apa, ayo jelajahi materinya dan coba lagi.";r.scrollIntoView({behavior:"smooth",block:"center"})}
+$("#rs").onclick=()=>{build();$("#kuis").scrollIntoView()};build();
+</script></body></html>
